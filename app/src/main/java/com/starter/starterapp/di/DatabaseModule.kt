@@ -1,10 +1,11 @@
 package com.starter.starterapp.di
 
-import com.starter.starterapp.data.remote.ApiService
-import com.starter.starterapp.data.remote.RetroClient
+import android.content.Context
+import com.starter.starterapp.data.local.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -13,11 +14,11 @@ import javax.inject.Singleton
  */
 @InstallIn(SingletonComponent::class)
 @Module
-class NetworkModule {
+class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideApiService(): ApiService {
-        return RetroClient.create()
+    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
+        return AppDatabase.create(context)
     }
 }
