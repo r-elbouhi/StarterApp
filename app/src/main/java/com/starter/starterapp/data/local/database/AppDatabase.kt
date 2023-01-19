@@ -13,6 +13,7 @@ import com.starter.starterapp.utils.DATABASE_NAME
 @Database(
     entities = [MyModel::class],
     version = 1,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun myModelDao(): MyModelDao

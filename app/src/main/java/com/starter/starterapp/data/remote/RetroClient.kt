@@ -25,7 +25,7 @@ object RetroClient {
 
 
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(ApiEndPoints.BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
