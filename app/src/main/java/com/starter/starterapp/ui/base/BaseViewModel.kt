@@ -5,16 +5,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.starter.starterapp.utils.ContextProviders
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Created by Rami El-bouhi on 11,January,2023
  */
-abstract class BaseViewModel(private val contextProvider: ContextProviders) : ViewModel() {
+open class BaseViewModel(private val contextProvider: ContextProviders) :
+    ViewModel() {
 
-    private val internalState = MutableLiveData<ViewState>()
+    internal val internalState = MutableLiveData<ViewState>()
 
     val state: LiveData<ViewState> = internalState
 

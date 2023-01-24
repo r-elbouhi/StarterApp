@@ -7,7 +7,7 @@ import androidx.viewbinding.ViewBinding
 /**
  * Created by Rami El-bouhi on 11,January,2023
  */
-abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel>
+abstract class BaseActivity<VB : ViewBinding>
     : AppCompatActivity() {
 
     lateinit var binding: VB

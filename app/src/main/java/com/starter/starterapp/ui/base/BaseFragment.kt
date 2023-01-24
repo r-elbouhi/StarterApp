@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
 
 /**
@@ -14,13 +13,12 @@ import androidx.viewbinding.ViewBinding
  */
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
 
-    var binding: VB? = null
+    protected var binding: VB? = null
     protected abstract fun onBindView(): VB?
-
     //    private lateinit var loadingDialog: LoadingDialog
     protected abstract val viewModel: VM
     protected abstract fun setUpViews(): VB?
-    abstract fun render(state: ViewState)
+    protected abstract fun render(state: ViewState)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,16 +48,16 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
     }
 
     // not private for the sake of overriding in case of custom implementation for specific screens
-    fun showLoading() {
+    open fun showLoading() {
 //        loadingDialog.show()
     }
 
     // not private for the sake of overriding in case of custom implementation for specific screens
-    fun hideLoading() {
+    open fun hideLoading() {
 //        loadingDialog.hide()
     }
 
-    fun showError(errorModel: String?) {
+    open fun showError(errorModel: String?) {
         hideLoading()
         Toast.makeText(context, errorModel, Toast.LENGTH_SHORT).show()
     }
